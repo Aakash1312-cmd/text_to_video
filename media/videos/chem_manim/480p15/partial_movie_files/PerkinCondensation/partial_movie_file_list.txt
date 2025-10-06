@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/1185818338_3604247048_223132457.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_4217992463_462971291.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_476409743_1664508279.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_4217992463_3497396256.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_3201495416_3487298220.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_3366045169_1263519434.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_917944964_862735861.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_2844360058_915422909.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_2174821112_1212534471.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_4217992463_2086763336.mp4'
+file 'file:/Users/akashdutta/text_to_video/MANIM/media/videos/chem_manim/480p15/partial_movie_files/PerkinCondensation/624642324_4274957154_174221049.mp4'

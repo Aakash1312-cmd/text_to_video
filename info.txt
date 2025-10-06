@@ -1,0 +1,29 @@
+"Base Instructions": {
+    "Manim Version": "Always generate the Manim script that uses attributes, methods, API changes, features, functions and syntax that are valid and supported only in Manim version of v0.19.0.",
+    "Screen Dimension": "The screen of the generated video should maintain a 16:9 aspect ratio, with a default resolution of 1920×1080 pixels, having HD picture quality.",
+    "Number of Scenes": "Keep the total number of scenes less than 20. The overall video duration must not exceed 3 minutes, ensuring concise, visually clear, and well-paced animation transitions.",
+    "Colors": "Use only valid colors supported in Manim v0.19.0. Prefer predefined constants like WHITE, BLACK, RED, GREEN, BLUE, YELLOW, PURPLE, or ORANGE. For custom shades, use hex codes (e.g., "#FF5733"). Avoid unsupported names like "skyblue" or "lightgreen.",
+    "Object Position": "Ensure all objects are positioned relative to the screen dimensions in Manim v0.19.0. Objects must remain fully visible within the 16:9 frame and should not overflow or extend outside the screen boundaries. In the latest Manim version of v0.19.0, FRAME_WIDTH and FRAME_HEIGHT are not global constants anymore, use config.frame_width and config.frame_height instead",
+    "Animations": "Use only valid animations: FadeIn, FadeOut, Write, Create, Transform, ReplacementTransform, Indicate, MoveAlongPath etc..",
+    "Output Instructions": "Return the MANIM script only in JSON Format."
+}
+
+
+"Physics Animation Instructions": {
+    "Use Cases": "Generate animations for physics concepts, diagrams, formulas, vectors, forces, mechanics, electricity, magnetism, optics, waves, nuclear physics, electronics and related topics.",
+    "Equations and Labels": "Use MathTex or Tex to render all equations and labels. Ensure all symbols and subscripts and fractions are correctly formatted.",
+    "Vectors and Arrows": "Use Arrow, Vector, or DashedLine objects for representing forces, velocity, or displacement. Keep vectors within screen boundaries.",
+    "Graphs and Plots": "Use Axes, NumberLine, and Plot objects for graphs. Scale plots to fit the screen without overflowing.",
+    "Object Dynamics": "Animate motion, forces, or transformations using valid Manim animations such as Create, Transform, ReplacementTransform, MoveAlongPath, FadeIn, FadeOut, and Indicate.",
+    "Clarity": "Use consistent colors, labels, and scales for readability. Avoid overlapping objects or cluttered scenes."
+}
+
+
+"Mathematics Animation Instructions": {
+    "Use Cases": "Generate animations for mathematical concepts, formulas, equations, theorems, graphs, geometric shapes, calculus, vector algebra, 3D geometry, linear algebra, trigonometry.",
+    "Equations and Labels": "Render all equations with MathTex or Tex. Keep fractions, radicals, subscripts, and superscripts correct. Complex expressions should be split into smaller MathTex objects if needed.",
+    "Graphs and Plots": "Use Axes, NumberLine, Plot, Line, ParametricFunction, Circle, Polygon, and Polygon objects. Define axes explicitly and scale to fit the 16:9 frame.",
+    "Geometric Shapes": "Use Circle, Square, Polygon, Dot, Line to represent constructions and diagrams. Animate shapes with Create, Transform, or Fade animations.",
+    "Object Placement": "Ensure all objects, shapes, and equations remain fully visible within the screen boundaries. Avoid overlaps using .next_to() with buff or .shift() adjustments.",
+    "Clarity": "Maintain proper scaling, spacing, and alignment for readability. Use consistent colors and visual style."
+}
