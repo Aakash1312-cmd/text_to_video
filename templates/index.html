@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://em-content.zobj.net/source/apple/391/brain_1f9e0.png" type="image/png">
+    <title>3D Human Anatomy Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 3D Human Anatomy Viewer</h1>
+        <p>Select a chapter and topic to view its interactive 3D model.</p>
+
+        <div class="content-wrapper">
+            <!-- Left: Model -->
+            <div class="model-container">
+                {% if iframe_code %}
+                    <h2>🧍 Viewing: {{ selected_topic or selected_chapter }}</h2>
+                    {{ iframe_code | safe }}
+                {% else %}
+                    <p>Select a chapter and topic to view the model.</p>
+                {% endif %}
+            </div>
+
+            <!-- Right: Controls -->
+            <div class="controls-container">
+                {% if error %}
+                    <div class="message warning">
+                        <p>{{ error }}</p>
+                    </div>
+                {% endif %}
+
+                <form method="POST" action="/">
+                    <label for="chapter">Chapter:</label>
+                    <select name="chapter" id="chapter" required onchange="updateTopics()">
+                        <option value="">-- Select Chapter --</option>
+                        {% for chapter in chapters %}
+                            <option value="{{ chapter }}" {% if chapter == selected_chapter %}selected{% endif %}>{{ chapter }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="topic">Topic:</label>
+                    <select name="topic" id="topic" required>
+                        <option value="">-- Select Topic --</option>
+                        {% for topic in topics %}
+                            <option value="{{ topic }}" {% if topic == selected_topic %}selected{% endif %}>{{ topic }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit">View Model</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Pass Flask database to JS
+    const database = {{ database | tojson }};
+
+    function updateTopics() {
+        const chapterSelect = document.getElementById("chapter");
+        const topicSelect = document.getElementById("topic");
+        const selectedChapter = chapterSelect.value;
+
+        // Clear previous topics
+        topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
+
+        if (selectedChapter in database) {
+            Object.keys(database[selectedChapter]).forEach(topic => {
+                const option = document.createElement("option");
+                option.value = topic;
+                option.text = topic;
+                topicSelect.appendChild(option);
+            });
+        }
+    }
+</script>
+</body>
+</html>
