@@ -38,10 +38,8 @@ class ChemistryReactionTemplate(Scene):
     }
 
     def construct(self):
-        # STEP 1: Intro
         self.introduce_reaction()
-
-        # STEP 2: Load molecules
+        
         reagents = self.load_molecules(self.CONFIG["reagent_files"], direction=LEFT)
         products = self.load_molecules(self.CONFIG["product_files"], direction=RIGHT)
 

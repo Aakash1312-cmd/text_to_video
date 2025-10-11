@@ -10,20 +10,23 @@
 <body>
     <div class="container">
         <h1>🧬 3D Human Anatomy Viewer</h1>
-        <p>Select a chapter and topic to view its interactive 3D model.</p>
+        <p>Type a chapter or topic and click "OK" to view its interactive 3D model.</p>
 
         <div class="content-wrapper">
-            <!-- Left: Model -->
+            <!-- Left: Model / Fallback -->
             <div class="model-container">
                 {% if iframe_code %}
-                    <h2>🧍 Viewing: {{ selected_topic or selected_chapter }}</h2>
+                    <h2>🧍 Viewing: {{ search_query }}</h2>
                     {{ iframe_code | safe }}
+                {% elif fallback_image %}
+                    <h2>🧍 Viewing: {{ search_query }} (Wikipedia Image)</h2>
+                    <img src="{{ fallback_image }}" alt="{{ search_query }}" style="max-width:100%; border-radius:8px;">
                 {% else %}
-                    <p>Select a chapter and topic to view the model.</p>
+                    <p>Type a chapter or topic and click "OK" to view the model.</p>
                 {% endif %}
             </div>
 
-            <!-- Right: Controls -->
+            <!-- Right: Search -->
             <div class="controls-container">
                 {% if error %}
                     <div class="message warning">
@@ -32,49 +35,11 @@
                 {% endif %}
 
                 <form method="POST" action="/">
-                    <label for="chapter">Chapter:</label>
-                    <select name="chapter" id="chapter" required onchange="updateTopics()">
-                        <option value="">-- Select Chapter --</option>
-                        {% for chapter in chapters %}
-                            <option value="{{ chapter }}" {% if chapter == selected_chapter %}selected{% endif %}>{{ chapter }}</option>
-                        {% endfor %}
-                    </select>
-
-                    <label for="topic">Topic:</label>
-                    <select name="topic" id="topic" required>
-                        <option value="">-- Select Topic --</option>
-                        {% for topic in topics %}
-                            <option value="{{ topic }}" {% if topic == selected_topic %}selected{% endif %}>{{ topic }}</option>
-                        {% endfor %}
-                    </select>
-
-                    <button type="submit">View Model</button>
+                    <input type="text" name="search_query" placeholder="Enter chapter or topic" value="{{ search_query or '' }}" required>
+                    <button type="submit">OK</button>
                 </form>
             </div>
         </div>
     </div>
-
-<script>
-    // Pass Flask database to JS
-    const database = {{ database | tojson }};
-
-    function updateTopics() {
-        const chapterSelect = document.getElementById("chapter");
-        const topicSelect = document.getElementById("topic");
-        const selectedChapter = chapterSelect.value;
-
-        // Clear previous topics
-        topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
-
-        if (selectedChapter in database) {
-            Object.keys(database[selectedChapter]).forEach(topic => {
-                const option = document.createElement("option");
-                option.value = topic;
-                option.text = topic;
-                topicSelect.appendChild(option);
-            });
-        }
-    }
-</script>
 </body>
 </html>
